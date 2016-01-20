@@ -18,6 +18,11 @@ var server = http.createServer(function(req, res) {
     env: env,
     onerror: function(err, req, res) { console.log(req.url.red) }
   }
+
+  // var host = req.headers.host
+  // console.log('host'.yellow, host)
+  // if (host && host.match(/localhost/))
+  res.setHeader("Access-Control-Allow-Origin", "*")
   
   serve(req, res, finalhandler(req, res, opts))
 
