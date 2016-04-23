@@ -1,34 +1,39 @@
-var colors = require('colors')
-var path = require('path')
-var http = require('http')
-var finalhandler = require('finalhandler')
-var serveStatic = require('serve-static')
+var colors                   = require('colors')
+var path                     = require('path')
+var http                     = require('http')
+var serveStatic              = require('serve-static')
 
-var env = process.env.ENV || 'dev'
-var port = process.env.PORT || 8000
-var serveOps = {fallthrough:false}
-var staticDir = path.join(__dirname,'public')
-var serve = serveStatic(staticDir)
 
-var server = http.createServer(function(req, res) {  
+var port            = process.env.PORT || 8000
+var allowCORS       = port == 8000
+
+var servePublic     = serveStatic(path.join(__dirname,'public'))
+var serveArchive    = serveStatic(path.join(__dirname,'archive'))
+
   
-  console.log(req.url)
-
-  var opts = {
-    env: env,
-    onerror: function(err, req, res) { console.log(req.url.red) }
-  }
+var server = http.createServer(function (req, res) {
 
   // var host = req.headers.host
   // console.log('host'.yellow, host)
-  // if (host && host.match(/localhost/))
-  res.setHeader("Access-Control-Allow-Origin", "*")
+  if (allowCORS)
+    res.setHeader("Access-Control-Allow-Origin", "*")
   
-  serve(req, res, finalhandler(req, res, opts))
+  console.log(req.method+'\t', req.url)
+  
+  servePublic(req, res, function(e1) {
+    serveArchive(req, res, function(e2) {
+  
+      res.statusCode = e2 ? (e2.status || 500) : 404;
+      console.log(res.statusCode.toString().red+'\t', req.url.red)
+      res.end(e2 ? e2.stack : 'Not found');
+  
+    })
+  })
 
 })
 
-console.log('Try listen on: '.gray, port.toString().white, staticDir)
-server.listen(port, () => {
+
+console.log('Starting '.gray)
+server.listen(port, function() {
   console.log('Listening on: '.gray + port.toString().white)
 })
