@@ -29,3 +29,4 @@ node_modules
 
 # build files from child projects
 bundle
+src/components

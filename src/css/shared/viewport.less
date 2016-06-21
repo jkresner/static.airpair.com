@@ -1,0 +1,31 @@
+@ff:~"screen and (-moz-images-in-menus:0)";
+
+@vpTiny:~"only screen and (max-width: 319px)";
+@vpMobilePotrait:~"only screen and (max-width: 399px)";
+@vpMobileLandscape:~"only screen and (max-width: 639px)";
+@vpTabletPotrait:~"only screen and (max-width: 899px)";
+// @vpTabletLandscape:~"only screen and (max-width: ???px)";
+@vpDesktopSmall:~"only screen and (max-width: 1199px)";
+@vpDesktopLarge:~"only screen and (max-width: 1599px)";
+@vpDesktopExtraLarge:~"only screen and (max-width: 5000px)";
+
+
+.min900 {
+  @media @vpTabletPotrait {
+    display:none!important
+  }
+}
+
+
+.min640 {
+  @media @vpMobileLandscape {
+    display:none!important
+  }
+}
+
+
+.min320 {
+  @media @vpTiny {
+    display:none!important
+  }
+}

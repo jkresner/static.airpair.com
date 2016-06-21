@@ -5,19 +5,20 @@ var serveStatic              = require('serve-static')
 
 
 var port            = process.env.PORT || 8000
-var allowCORS       = port == 8000
+var allowCORSHost   = port == 8000 ? "http://localhost:3333" : "https://www.airpair.com"
 
-var servePublic     = serveStatic(path.join(__dirname,'public'))
-var serveArchive    = serveStatic(path.join(__dirname,'archive'))
+var servePublic     = serveStatic(path.join(__dirname,'host','public'))
+var serveArchive    = serveStatic(path.join(__dirname,'host','archive'))
 
   
 var server = http.createServer(function (req, res) {
 
   // var host = req.headers.host
   // console.log('host'.yellow, host)
-  if (allowCORS)
-    res.setHeader("Access-Control-Allow-Origin", "*")
-  
+
+  res.setHeader("Access-Control-Allow-Origin", allowCORSHost)
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+
   console.log(req.method+'\t', req.url)
   
   servePublic(req, res, function(e1) {

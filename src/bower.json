@@ -1,0 +1,6 @@
+{
+  "name": "static.airpair.com",
+  "dependencies": {
+    "moment": "2.11.1"
+  }
+}

@@ -1,0 +1,25 @@
+.server-errors {
+  position:relative;
+  width:100%;
+  text-align:center;
+  background:white;
+  z-index:1500;
+  margin-top:-2px;
+  padding:1px 5px;
+  .alert-danger {
+    z-index:1501;
+    margin:5px auto;
+    padding:14px;
+    h4 { margin-bottom:0px;font-size:20px }
+    // max-height:80px;
+    > div {
+      position:relative;
+      max-width:900px;
+      margin:auto;padding-left:40px;
+    }
+    button { position:absolute;top:-5px;left:10px;font-size:28px }
+  }
+  p {                        padding-bottom:0px;
+                             color:gray;
+                             font-size:15px }
+}

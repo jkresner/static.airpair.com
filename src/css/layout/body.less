@@ -1,0 +1,125 @@
+@pagewidth:900px;
+
+body { width:100% }
+
+.absolutelyStreched {
+  position:absolute;
+  top:0;bottom:0;left:0;right:0;
+}
+
+
+
+div.main-wrap {
+  margin:0;
+  width:100%;
+  padding-bottom:50px;
+  &+hr { clear:both;border:white;padding:2px }
+
+  @media only screen and (max-width: 640px) {
+    padding-bottom:10px
+  }
+}
+
+
+main {
+  max-width:@pagewidth;
+  margin:0 auto;
+  padding:0;
+  border:solid 1px white;
+  > header {
+    color:@gray;
+    height:35px;
+    width:100%;
+    margin:0px auto 0px -1px;
+    padding:0px 5px 0 5px;
+    font-size:11px;
+    line-height:13px;
+    text-transform:uppercase;
+    white-space:nowrap;
+
+    .breadcrumb {
+      background:none;
+      padding:10px 0 5px 0;
+      margin:none;
+
+      > li + li:before {
+        content: "> ";
+        padding:0px 4px;
+     }
+    }
+  }
+
+  .page-header {
+    position:relative;
+    margin:30px 0 0 0 ;
+
+    // border:solid 1px green;
+    h1 { font-size:34px;line-height:36px;
+      padding-bottom:0;margin:0;color:@graydark }
+    small { font-size:18px;color:@bluegraydark }
+    a { font-size:16px;
+        position:absolute;right:10px;top:0;line-height:36px;
+      padding:4px;  }
+  }
+
+
+  @media only screen and (max-width: 900px) {
+    width:640px;
+    > header { padding:0px; }
+  }
+
+  @media only screen and (max-width: 640px) {
+    width:320px;
+    > * { margin-left:3px }
+    div.col h3, div.col h2 { margin-top:2px;font-size:20px;padding-top:0px }
+    > section { margin:0 auto 20px auto;width:96% }
+    .btn-primary { width:100% }
+    .edit hr { display:none }
+    .display h2 { font-size:16px }
+    .display h2 span { display:none }
+    > header {
+      // margin-left:0;
+      width:320px;
+      padding:0px 8px;
+      .breadcrumb { margin:-15px auto 10px auth;padding:1px 8px }
+    }
+  }
+
+}
+
+
+.choice {
+  text-align:center;
+
+  h2 { margin-bottom:0;padding-bottom:0 }
+  h4 { margin:0 auto 40px auto;padding-top:0;color:@orange; }
+
+  .option {
+    vertical-align:top;
+    width:48%;
+    border:solid 2px @bluelight;
+    padding:20px;
+    text-align:center;
+    display:inline-block;
+
+    h2 {
+      margin:0 auto 20px auto;
+      max-width:70%;
+      border-bottom:solid 1px @bluelight;
+    }
+
+    ul {
+      padding:0;list-style:none;
+    }
+
+    a.btn { width:60%;margin-top:10px }
+  }
+
+  @media only screen and (max-width:640px) {
+    .option {
+      display:block;
+      width:300px;
+      margin-bottom:20px;
+    }
+  }
+}
