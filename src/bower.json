@@ -1,6 +1,12 @@
 {
   "name": "static.airpair.com",
   "dependencies": {
-    "moment": "2.11.1"
+    "angular": "1.4.5",
+    "angular-route": "1.4.5",    
+    "angular-ui-ace": "0.2.3",
+    "angular-load": "0.4.0",    
+    "lodash": "3.10.1",    
+    "moment": "2.11.1",
+    "jquery": "2.1.3"    
   }
 }
